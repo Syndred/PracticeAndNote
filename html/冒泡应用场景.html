@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="myList">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <div id="parent">
+      <input
+        type="text"
+        id="children"
+      />
+    </div>
+  </body>
+</html>
+
+<script>
+  // 事件委派：利用冒泡特性，监听父元素，当子元素触发事件时，事件会冒泡到父元素，从而触发父元素的事件监听器，达到提高性能的目的。
+  const list = document.getElementById("myList");
+  list.addEventListener("click", function (event) {
+    // event.target 表示实际触发事件的元素
+    // event.target.tagName 返回该元素的标签名，始终是大写形式。
+    if (event.target.tagName === "LI") {
+      console.log("You clicked on: " + event.target.textContent);
+    }
+  });
+
+  // 自定义事件传播：子元素触发自定义事件，事件会冒泡到父元素，从而触发父元素的事件监听器，达到提高性能的目的。
+
+  // 子元素派发自定义事件
+  const children = document.getElementById("children");
+  children.addEventListener("input", function (event) {
+    const newValue = event.target.value;
+    // CustomEvent第二个参数为配置对象，detail属性用于传递自定义数据
+    parent.dispatchEvent(new CustomEvent("myCustomEvent", { detail: newValue }));
+  });
+  // 父元素监听自定义事件
+  const parent = document.getElementById("parent");
+  parent.addEventListener("myCustomEvent", function (event) {
+    console.log(event.detail);
+  });
+</script>
