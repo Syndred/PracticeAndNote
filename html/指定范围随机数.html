@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let num = null;
+            Math.round(num); //四舍五入
+            Math.floor(num); //向下取整(趋近于-∞)
+            Math.ceil(num); //向上取整(趋近于∞)
+            Math.random(); //[0,1)
+            function rand(min, max) {
+                // [min,max]
+                // return Math.floor(Math.random()*(max-min+1)+min)
+                //用四舍五入会由于random()范围产生误差
+                // return Math.round(Math.random()*(max-min)+min)
+                //(min,max)
+                // return Math.round(Math.random()*(max-min-2)+min+1)
+                // (min,max]
+                // return Math.ceil(Math.random()*(max-min)+min)
+                //[max,min)
+                // return Math.floor(Math.random()*(max-min)+min)
+            }
+            console.log(rand(1, 3));
+        </script>
+    </body>
+</html>

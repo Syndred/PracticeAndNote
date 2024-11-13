@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function outside(x) {
+                function inside(y) {
+                    return x + y;
+                }
+                return inside;
+            }
+
+            const fnInside = outside(3); // 可以这样想：给我一个可以将提供的值加上 3 的函数
+            console.log(fnInside(5)); // 8
+            // 当outside(3)的时候，相当于返回一个内置了x=3的inside()函数
+            // 所以outside(3)(5)相当于内置了x=3的inside(5)
+            console.log(outside(3)(5));
+
+            //注意到上例中 inside 被返回时 x 是怎么被保留下来的。一个闭包必须保存它可见作用域中所有参数和变量。因为每一次调用传入的参数都可能不同，每一次对外部函数的调用实际上重新创建了一遍这个闭包。只有当返回的 inside 没有再被引用时，内存才会被释放。
+        </script>
+    </body>
+</html>

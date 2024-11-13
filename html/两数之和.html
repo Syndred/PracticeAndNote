@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const arr = [8, 5, 4, 2];
+            const target = 10;
+            const sum = (arr) => {
+                for (let i = 0; i < arr.length; i++) {
+                    let x = arr.indexOf(target - arr[i]);
+                    if (x != -1 && x != i) {
+                        return [arr[i], arr[x]];
+                    }
+                }
+            };
+            console.log(sum(arr));
+        </script>
+    </body>
+</html>

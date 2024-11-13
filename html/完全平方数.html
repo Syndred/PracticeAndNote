@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 给定一个正整数n，你需要找到一种方法，用最少完全平方数相加得到n。就是将n 分解成若干个完全平方数的和，并且这些完全平方数的个数要尽可能少。
+            function numSquares(n) {
+                let dp = new Array(n + 1).fill(Infinity);
+                dp[0] = 0;
+
+                for (let i = 1; i <= n; i++) {
+                    for (let j = 1; j * j <= i; j++) {
+                        dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+                    }
+                }
+
+                return dp[n];
+            }
+            console.log(numSquares(12));
+        </script>
+    </body>
+</html>

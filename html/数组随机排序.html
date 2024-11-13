@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        function result(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                let randomIndex = parseInt(Math.random() * arr.length);
+                let curNum = arr[i];
+                arr[i] = arr[randomIndex];
+                arr[randomIndex] = curNum;
+            }
+            return arr;
+        }
+        console.log(result(arr));
+        //借助sort实现
+        function result1(arr) {
+            arr.sort(() => Math.random() - 0.5);
+            return arr;
+        }
+        console.log(result1(arr));
+    </script>
+</body>
+
+</html>

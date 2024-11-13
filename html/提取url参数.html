@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let url = "https://alibaba.com?a=1&b=2&c=3#hash";
+            function queryURLParams(urlValue) {
+                let queryStr = urlValue.split("?")[1];
+                const params = new URLSearchParams(queryStr);
+                
+                console.log(params.get("a"));// get方法获取参数
+                params.set("param3", "value3"); // 设置或替换 'param3' 的值为 'value3'
+                // 遍历查询
+                for (let [key, value] of params.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+                // Object.fromEntries() 是 JavaScript 中的一个静态方法，用于将可迭代对象（通常是一个键值对数组的迭代器）转换为一个普通的 JavaScript 对象。
+              return  Object.fromEntries(params.entries())
+            }
+            console.log(queryURLParams(url));
+        </script>
+    </body>
+</html>

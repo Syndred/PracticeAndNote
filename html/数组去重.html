@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 使用includes()方法去重
+            const array = [
+                {},
+                {},
+                "",
+                "",
+                11,
+                11,
+                "22",
+                "22",
+                "abc",
+                undefined,
+                null,
+                null,
+                NaN,
+                NaN,
+                123,
+                [2],
+                [2],
+                [2, 3],
+            ];
+
+            Array.prototype.useIncludes = function () {
+                let arr = [];
+                for (let i = 0; i < this.length; i++) {
+                    if (!arr.includes(this[i])) {
+                        arr.push(this[i]);
+                    }
+                }
+                return arr;
+            };
+
+            console.log(array.useIncludes());
+
+            // 使用filter&indexOf去重
+            Array.prototype.useFilter = function () {
+                // const arr = this.filter((value, index, self) => {
+                //     // indexOf返回的是第一个出现的位置下标
+                //     // console.log(self.indexOf(value)===index);
+                //     return self.indexOf(value) === index;
+                // });
+                // return arr;
+                return this.filter((v, idx) => {
+                    return this.indexOf(v) === idx;
+                });
+            };
+            console.log(array.useFilter());
+
+            // 使用Set去重
+            Array.prototype.useSet = function () {
+                const arr = new Set(this);
+                // 创建数组
+                return Array.from(arr);
+            };
+            console.log(array.useSet());
+        </script>
+    </body>
+</html>

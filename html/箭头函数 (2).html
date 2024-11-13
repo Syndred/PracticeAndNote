@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 一般箭头函数结构为()=>{}
+            // 而如果{}中需要放入对象时则变成()=>({})
+            const input = { key: "name", key1: "syndred" };
+            // 传入的参数使用解构赋值获取对应的值，要求传入的参数必须有对应的变量名
+            const fun = ({ key, key1 }) => ({
+                //这里使用[]是将对象的key转为动态变量，否则将被解释为字符串 "key"如{key: 'syndred'},此计算属性名的语法叫做对象字面量语法
+                [key]: key1,
+            });
+            console.log(fun(input)); //{name: 'syndred'}
+        </script>
+    </body>
+</html>

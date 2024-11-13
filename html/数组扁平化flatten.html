@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // const arr = [1, 2, 3, [4, 5, 6], [7, 8, 9], [10, 11, [12, 13, [14, 15]]]];
+            // const flatten = (arr) => {
+            //     while (arr.some((element) => Array.isArray(element))) {
+            //         arr = [].concat(...arr);
+            //     }
+            //     return arr;
+            // };
+            // console.log(flatten(arr));
+
+            // 递归1.0:concat拼接
+            // const arr = [1, 2, 3, [4, 5, 6], [7, 8, 9], [10, 11, [12, 13, [14, 15]]]];
+            // const flatten = (arr) => {
+            //     let result = [];
+            //     arr.forEach((element) => {
+            //         if (Array.isArray(element)) {
+            //             result = result.concat(flatten(element));
+            //         } else {
+            //             // 这里可以用concat拼接，也可以直接用push
+            //             result = result.concat(element);
+            //         }
+            //     });
+            //     return result;
+            // };
+            // console.log(flatten(arr));
+
+            // reduce版
+            // const arr = [1, 2, 3, [4, 5, 6], [7, 8, 9], [10, 11, [12, 13, [14, 15]]]];
+            // const flatten = (arr) => {
+            //     return arr.reduce(
+            //         (acc, curr) =>
+            //             Array.isArray(curr) ? acc.concat(flatten(curr)) : acc.concat(curr),
+            //         [],
+            //     );
+            // };
+            // console.log(flatten(arr));
+
+            // 递归2.0:展开运算符
+            // const arr = [1, 2, 3, [4, 5, 6], [7, 8, 9], [10, 11, [12, 13, [14, 15]]]];
+            // const flatten = (arr) => {
+            //     let result = [];
+            //     arr.forEach((element) => {
+            //         if (Array.isArray(element)) {
+            //             result.push(...flatten(element));
+            //         } else {
+            //             result.push(element);
+            //         }
+            //     });
+            //     return result;
+            // };
+            // console.log(flatten(arr));
+
+            // reduce版
+            // const arr = [1, 2, 3, [4, 5, 6], [7, 8, 9], [10, 11, [12, 13, [14, 15]]]];
+            // const flatten = (arr) =>
+            //     arr.reduce(
+            //         (acc, element) =>
+            //             Array.isArray(element) ? [...acc, ...flatten(element)] : [...acc, element],
+            //         [],
+            //     );
+            // console.log(flatten(arr));
+
+            // map递归
+            const arr = [1, 2, 3, [4, 5, 6], [7, 8, 9], [10, 11, [12, 13, [14, 15]]]];
+            const flatten = (arr) =>
+                [].concat(...arr.map((v) => (Array.isArray(v) ? flatten(v) : v)));
+            console.log(flatten(arr));
+        </script>
+    </body>
+</html>

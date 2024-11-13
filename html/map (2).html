@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // map方法接收两个参数，第一个参数是要遍历的数组，第二个参数是遍历的回调函数
+            // map方法返回一个新的数组，遍历的结果会保存在新的数组中，map方法不会改变原数组
+            //相当于给一个数组，挨个操作其中的元素
+            // 1、常规
+            const arr = [1, 2, 3, 4];
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = arr[i] * 2;
+            }
+            console.log(arr);
+            // 2、使用map方法
+            const arr1 = [1, 2, 3, 4];
+            const arr2 = arr1.map((item) => item * 2);
+            console.log(arr2);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let arr = [1, 2, 3, 4, 5];
+            Array.prototype.myUnshift = function () {
+                // this为调用者实例
+                // console.log(this);
+                const len = arguments.length;
+                for (let i = len - 1; i >= 0; i--) {
+                    this.splice(0, 0, arguments[i]);
+                }
+                // arr已经被修改了，所以在这里返回长度就好
+                return this.length;
+            };
+            // myUnshift(6, 7, 8); //[6,7,8,1,2,3,4,5]
+            console.log(arr.myUnshift(6, 7, 8), arr);
+        </script>
+    </body>
+</html>

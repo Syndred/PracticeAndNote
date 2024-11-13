@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // 输入字符串，输出出现最多次数的字符及其出现次数
+            var str = "aaaaazbbbbzbbbzdzddddczcccczzczczzx";
+            let outString = (str) => {
+                var obj = {};
+                var max = 0;
+                var name = "";
+                for (var i = 0; i < str.length; i++) {
+                    var eveStr = str.charAt(i);
+                    if (obj[eveStr]) {
+                        obj[eveStr]++;
+                    } else {
+                        obj[eveStr] = 1;
+                    }
+                }
+                for (const i in obj) {
+                    if (obj[i] > max) {
+                        max = obj[i];
+                        name = i;
+                    }
+                }
+                return name + ":" + max; 
+            };
+            console.log(outString(str));//z:10
+        </script>
+    </body>
+</html>
